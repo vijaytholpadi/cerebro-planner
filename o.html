@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open in Obsidian</title>
+<meta name="robots" content="noindex">
+<style>
+  body{font:16px/1.6 system-ui,-apple-system,sans-serif;max-width:560px;margin:64px auto;padding:0 16px;color:#1f2328;background:#fff}
+  @media (prefers-color-scheme:dark){body{color:#e6edf3;background:#0d1117} a{color:#58a6ff}}
+</style>
+</head>
+<body>
+<p id="msg">Opening Obsidian…</p>
+<p><a id="go" href="#">Click here if nothing happens</a></p>
+<script>
+  // The note path lives in the #fragment, which browsers never send to the server.
+  // This page only ever redirects to the obsidian:// scheme on this computer.
+  var p = decodeURIComponent((location.hash || "").slice(1));
+  if (p) {
+    var url = "obsidian://open?path=" + encodeURIComponent(p);
+    document.getElementById("go").href = url;
+    location.href = url;
+  } else {
+    document.getElementById("msg").textContent = "No note given.";
+  }
+</script>
+</body>
+</html>
